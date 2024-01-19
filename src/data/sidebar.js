@@ -1,0 +1,50 @@
+export const data = [
+  {
+    name: "Dashboard",
+    icon: "/dashboard.png",
+    count: 0,
+    chevron: false,
+    route: "/",
+  },
+  {
+    name: "Pedidos",
+    icon: "/pedidos.png",
+    count: 25,
+    chevron: false,
+    route: "/orders",
+  },
+  {
+    name: "Productos",
+    icon: "/productos.png",
+    count: 0,
+    chevron: false,
+    route: "/products",
+  },
+  {
+    name: "Banners",
+    icon: "/banners.png",
+    count: 0,
+    chevron: false,
+    route: "/banners",
+  },
+  {
+    name: "Clientes",
+    icon: "/clientes.png",
+    count: 0,
+    chevron: true,
+  },
+  {
+    name: "Sucursales",
+    icon: "/sucursales.png",
+    count: 0,
+    chevron: false,
+    route: "/branches",
+  },
+  {
+    name: "Analytics",
+    icon: "/analytics.png",
+    count: 0,
+    chevron: false,
+    route: "/analytics",
+  },
+];
