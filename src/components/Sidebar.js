@@ -17,7 +17,7 @@ import { data } from "../data/sidebar";
 
 import { MdOutlineDashboard } from "react-icons/md";
 
-const drawerWidth = 250;
+const drawerWidth = 230;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -83,15 +83,17 @@ export const Sidebar = () => {
   return (
     <Drawer variant="permanent" open={open} className="bg-[#fff]">
       <DrawerHeader>
+        <IconButton onClick={handleDrawerToggle}>
+          <MdOutlineDashboard className="text-primary text-3xl" />{" "}
+        </IconButton>
         {open && (
           <>
-            <MdOutlineDashboard className="text-primary text-3xl" />
             <h1 className="text-2xl flex-1">IntelliSuite</h1>
+            <IconButton onClick={handleDrawerToggle}>
+              <MenuIcon />
+            </IconButton>
           </>
         )}
-        <IconButton onClick={handleDrawerToggle}>
-          <MenuIcon />
-        </IconButton>
       </DrawerHeader>
       <List>
         {data.map((item, i) => (
