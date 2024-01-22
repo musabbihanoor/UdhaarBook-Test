@@ -147,47 +147,50 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#fff" }}
+        className="border-b-[1px] border-b-[#ccc]"
+      >
         <Toolbar>
+          <h1 className="text-black text-2xl">Dashboard</h1>
+          <Box sx={{ flexGrow: 1 }} />
           <Search>
             <StyledInputBase
-              placeholder="Buscar"
+              placeholder="Search here.."
               inputProps={{ "aria-label": "search" }}
               sx={{
                 backgroundColor: theme.palette.lightBlue,
-                border: "1px solid",
-                borderColor: theme.palette.mediumGrey,
                 borderRadius: 50,
                 width: "500px",
+                color: "#000",
               }}
             />
 
-            <SearchIcon className="absolute top-2 right-4" />
+            <SearchIcon className="absolute top-2 left-4 text-primary" />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex", gap: 30 } }}>
             <IconButton>
-              <Badge badgeContent={12} color="error">
-                <NotificationsNoneOutlinedIcon
-                  sx={{ color: theme.palette.basicRed }}
-                />
+              <Badge badgeContent={12} color="primary">
+                <NotificationsNoneOutlinedIcon />
               </Badge>
             </IconButton>
             <IconButton>
-              <Badge badgeContent={17} color="error">
-                <ChatOutlinedIcon sx={{ color: theme.palette.basicRed }} />
+              <Badge badgeContent={17} color="primary">
+                <ChatOutlinedIcon />
               </Badge>
             </IconButton>
             <IconButton>
-              <Badge badgeContent={"!"} color="secondary">
-                <SettingsOutlinedIcon sx={{ color: theme.palette.basicRed }} />
+              <Badge badgeContent={"!"} color="error">
+                <SettingsOutlinedIcon />
               </Badge>
             </IconButton>
 
-            <hr className="border-0 border-l-[1px] border-medium-grey h-10" />
+            <hr className="border-0 border-l-[1px] border-[#ccc] h-10" />
 
-            <button className="text-white bg-basic-red px-6 rounded-lg relative pr-12 font-poppins">
-              Hola, <b>Samuel</b>
+            <button className="text-white bg-primary px-6 rounded-lg relative pr-12 font-poppins">
+              Hi, <b>Samuel</b>
               <img
                 alt="user"
                 src="https://randomuser.me/api/portraits/men/1.jpg"

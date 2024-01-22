@@ -1,12 +1,14 @@
 import React from "react";
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
+import Dashboard from "../pages/Dashboard";
 
 // import PrivateRoute from "./PrivateRoute";
 
 export const AppRouter = ({ authorize }) => {
   return (
     <Routes>
-      {/* <Route path="/" element={<Login authorize={authorize} />} /> */}
+      <Route path="/" element={<Dashboard authorize={authorize} />} />
     </Routes>
   );
 };

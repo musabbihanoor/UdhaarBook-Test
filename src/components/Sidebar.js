@@ -9,11 +9,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 import { useTheme } from "@mui/system";
 import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { data } from "../data/sidebar";
+
+import { MdOutlineDashboard } from "react-icons/md";
 
 const drawerWidth = 250;
 
@@ -79,14 +81,13 @@ export const Sidebar = () => {
   };
 
   return (
-    <Drawer variant="permanent" open={open} className="font-gotham bg-white">
+    <Drawer variant="permanent" open={open} className="bg-[#fff]">
       <DrawerHeader>
         {open && (
-          <img
-            alt="logo"
-            src={process.env.PUBLIC_URL + "/pngs/sidebar/logo.png"}
-            className="w-[180px]"
-          />
+          <>
+            <MdOutlineDashboard className="text-primary text-3xl" />
+            <h1 className="text-2xl flex-1">IntelliSuite</h1>
+          </>
         )}
         <IconButton onClick={handleDrawerToggle}>
           <MenuIcon />
@@ -102,12 +103,11 @@ export const Sidebar = () => {
                 display: "block",
                 marginY: 1,
                 borderLeft: "5px solid",
-                backgroundColor:
-                  active === item.name
-                    ? theme.palette.lightGrey
-                    : "transparent",
+                backgroundColor: active === item.name ? "#eee" : "transparent",
                 borderLeftColor:
-                  active === item.name ? theme.palette.darkGrey : "transparent",
+                  active === item.name
+                    ? theme.palette.primary.main
+                    : "transparent",
               }}
             >
               <ListItemButton
@@ -136,29 +136,16 @@ export const Sidebar = () => {
                     <ListItemText
                       primary={item.name}
                       sx={{
-                        color: theme.palette.darkGrey,
+                        color:
+                          active === item.name
+                            ? theme.palette.primary.main
+                            : theme.palette.darkGrey,
+                        fontWeight: active === item.name ? "900" : "500",
                         flex: "none",
                         fontStyle: active === item.name ? "italic" : "normal",
                       }}
                     />
-
-                    {item.count > 0 && (
-                      <p className="bg-dark-grey text-white rounded-lg px-2 py-1 text-sm">
-                        {item.count}
-                      </p>
-                    )}
                   </div>
-                )}
-                {item.chevron && open && (
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      justifyContent: "center",
-                      opacity: 0.5,
-                    }}
-                  >
-                    <ChevronRightIcon />
-                  </ListItemIcon>
                 )}
               </ListItemButton>
             </ListItem>
@@ -174,15 +161,10 @@ export const Sidebar = () => {
             }}
           >
             <Link
-              className="flex items-center bg-dark-grey m-1 py-2 w-full justify-center rounded-full text-white"
+              className="flex items-center bg-[#ccc] m-1 py-2 w-full justify-center rounded-full text-black"
               to="/product/add"
             >
-              <img
-                className="mr-2"
-                alt="logo"
-                src={process.env.PUBLIC_URL + "/pngs/add-circle.png"}
-              />
-              Agregar Producto
+              Add Product
             </Link>
           </Button>
           <Button
@@ -191,23 +173,18 @@ export const Sidebar = () => {
             }}
           >
             <Link
-              className="flex items-center bg-basic-red m-1 py-2 w-full justify-center rounded-full text-white"
+              className="flex items-center bg-primary m-1 py-2 w-full justify-center rounded-full text-white"
               to="/banner/add"
             >
-              <img
-                className="mr-2"
-                alt="logo"
-                src={process.env.PUBLIC_URL + "/pngs/add-circle.png"}
-              />
-              Agregar banner
+              Track Order
             </Link>
           </Button>
 
           <p className="text-[10px] text-center font-poppins">
             <span className="font-semibold">
-              Pollo Victorina Administrador Dashboard
+              IntelliSuite Administrador Dashboard
             </span>{" "}
-            <br /> © 2023 Todos los Derechos Reservados
+            <br /> Copyright © 2024
           </p>
         </>
       )}
