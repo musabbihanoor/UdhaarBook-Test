@@ -8,7 +8,7 @@ module.exports = {
         "text-primary": "#181818",
         "dark-red": "#8F1C26 ",
         "dark-yellow": "#BF8A12",
-        "basic-red": "#E52823",
+        red: "#E52823",
         white: "#ffffff",
         "light-red": "#F9B8B9",
         "light-yellow": "#FEE6B0",
@@ -17,6 +17,9 @@ module.exports = {
         "light-blue": "#F0F5FA",
         "dark-grey": "#32343E",
         grey: "#9A9A9A",
+        green: "#00C34E",
+        peach: "#F18680",
+        purple: "#6E59E9",
       },
     },
     fontFamily: {
