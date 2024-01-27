@@ -7,10 +7,10 @@ export const data = [
   {
     icon: <MdShoppingCart />,
     title: "Orders",
-    value: 17.31,
+    value: 1731,
     status: "up",
     rate: "4.9%",
-    prevValue: 12.32,
+    prevValue: 1232,
     color: "primary",
   },
   {
@@ -19,7 +19,7 @@ export const data = [
     value: 152,
     status: "up",
     rate: "2.3%",
-    prevValue: 2.3,
+    prevValue: 123,
     color: "green",
   },
   {

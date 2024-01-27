@@ -8,8 +8,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-import { useTheme } from "@mui/system";
-import { Box, Button } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { data } from "../data/sidebar";
 
@@ -72,7 +74,6 @@ const Drawer = styled(MuiDrawer, {
 export const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const [active, setActive] = useState("Dashboard");
-  const theme = useTheme(); // Get the current theme
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -95,35 +96,109 @@ export const Sidebar = () => {
       </DrawerHeader>
       <List>
         {data.map((item, i) => (
-          <Link to={item.route}>
-            <ListItem
+          <Item key={i} item={item} />
+        ))}
+      </List>
+
+      {open && (
+        <p className="text-[10px] text-center font-poppins">
+          <span className="font-semibold">
+            IntelliSuite Administrador Dashboard
+          </span>{" "}
+          <br /> Copyright © 2024
+        </p>
+      )}
+    </Drawer>
+  );
+};
+
+const options = [
+  "None",
+  "Atria",
+  "Callisto",
+  "Dione",
+  "Ganymede",
+  "Hangouts Call",
+  "Luna",
+  "Oberon",
+  "Phobos",
+  "Pyxis",
+  "Sedna",
+  "Titania",
+  "Triton",
+  "Umbriel",
+];
+
+const ITEM_HEIGHT = 48;
+
+const Item = ({ item }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div onMouseEnter={handleClick} onMouseLeave={handleClose}>
+      <Link to={item.route} className="bg-primary">
+        <img
+          alt={item.name}
+          src={process.env.PUBLIC_URL + "/pngs/sidebar/" + item.icon}
+        />
+        <p>{item.name}</p>
+      </Link>
+
+      <Menu
+        id="long-menu"
+        MenuListProps={{
+          "aria-labelledby": "long-button",
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          style: {
+            maxHeight: ITEM_HEIGHT * 4.5,
+            width: "20ch",
+          },
+        }}
+      >
+        {options.map((option) => (
+          <MenuItem
+            key={option}
+            selected={option === "Pyxis"}
+            onClick={handleClose}
+          >
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
+  );
+};
+
+/* <ListItem
               key={i}
+              className={`block my-1 border-l-[5px] ${
+                active === item.name
+                  ? "border-l-primary bg-[#eee]"
+                  : "border-l-transparent bg-transparent"
+              }`}
               disablePadding
-              sx={{
-                display: "block",
-                marginY: 1,
-                borderLeft: "5px solid",
-                backgroundColor: active === item.name ? "#eee" : "transparent",
-                borderLeftColor:
-                  active === item.name
-                    ? theme.palette.primary.main
-                    : "transparent",
-              }}
             >
               <ListItemButton
                 onClick={() => setActive(item.name)}
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
+                className={`min-h-[48px] px-10 ${
+                  open ? "justify-initial" : "justify-center"
+                }`}
               >
                 <Box
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
+                  className={`min-w-0 ${
+                    open ? "mr-3" : "mr-auto"
+                  } justify-center`}
                 >
                   <img
                     alt={item.name}
@@ -135,59 +210,13 @@ export const Sidebar = () => {
                   <div className="flex items-center justify-start gap-3 w-full">
                     <ListItemText
                       primary={item.name}
-                      sx={{
-                        color:
-                          active === item.name
-                            ? theme.palette.primary.main
-                            : theme.palette.darkGrey,
-                        fontWeight: active === item.name ? "900" : "500",
-                        flex: "none",
-                        fontStyle: active === item.name ? "italic" : "normal",
-                      }}
+                      className={`${
+                        active === item.name
+                          ? "text-primary italic"
+                          : "text-dark-grey"
+                      }`}
                     />
                   </div>
                 )}
               </ListItemButton>
-            </ListItem>
-          </Link>
-        ))}
-      </List>
-
-      {open && (
-        <>
-          <Button
-            sx={{
-              textTransform: "capitalize",
-            }}
-          >
-            <Link
-              className="flex items-center bg-[#ccc] m-1 py-2 w-full justify-center rounded-full text-black"
-              to="/product/add"
-            >
-              Add Product
-            </Link>
-          </Button>
-          <Button
-            sx={{
-              textTransform: "capitalize",
-            }}
-          >
-            <Link
-              className="flex items-center bg-primary m-1 py-2 w-full justify-center rounded-full text-white"
-              to="/banner/add"
-            >
-              Track Order
-            </Link>
-          </Button>
-
-          <p className="text-[10px] text-center font-poppins">
-            <span className="font-semibold">
-              IntelliSuite Administrador Dashboard
-            </span>{" "}
-            <br /> Copyright © 2024
-          </p>
-        </>
-      )}
-    </Drawer>
-  );
-};
+            </ListItem> */
