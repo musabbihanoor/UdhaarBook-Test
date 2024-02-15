@@ -1,4 +1,10 @@
-import { GET_MEAL_BY_CATEGORY, GET_MEAL_BY_ID, GET_RANDOM_MEAL } from "./types";
+import {
+  ADD_MEAL_TO_FAVORITES,
+  GET_MEAL_BY_CATEGORY,
+  GET_MEAL_BY_ID,
+  GET_RANDOM_MEAL,
+  REMOVE_MEAL_FROM_FAVORITES,
+} from "./types";
 
 export const getMealByCategory = (category) => {
   return async (dispatch) => {
@@ -40,4 +46,12 @@ export const getRandomMeal = () => {
       console.error("Error fetching random meal:", error);
     }
   };
+};
+
+export const addMealToFavorites = (meal) => {
+  return { type: ADD_MEAL_TO_FAVORITES, payload: meal };
+};
+
+export const removeMealFromFavorites = (mealId) => {
+  return { type: REMOVE_MEAL_FROM_FAVORITES, payload: mealId };
 };

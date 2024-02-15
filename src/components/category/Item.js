@@ -10,33 +10,29 @@ const CategoryItem = ({
   data: { strCategory, strCategoryDescription, strCategoryThumb },
 }) => {
   return (
-    <Card sx={{ width: "100%" }}>
-      <CardMedia
-        sx={{ height: 200 }}
-        image={strCategoryThumb}
-        title={strCategory}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {strCategory}
-        </Typography>
-        <Typography
-          title={strCategoryDescription}
-          variant="body2"
-          color="text.secondary"
-        >
-          {strCategoryDescription.length > 150
-            ? strCategoryDescription.slice(0, 150) + "..."
-            : strCategoryDescription}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Link to={`/meals/${strCategory}`}>
-          <Button size="small">Visit</Button>
-        </Link>
-      </CardActions>
-    </Card>
+    <Link to={`/meals/${strCategory}`}>
+      <Card sx={{ width: "100%", cursor: "pointer" }}>
+        <CardMedia
+          sx={{ height: 200 }}
+          image={strCategoryThumb}
+          title={strCategory}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {strCategory}
+          </Typography>
+          <Typography
+            title={strCategoryDescription}
+            variant="body2"
+            color="text.secondary"
+          >
+            {strCategoryDescription.length > 150
+              ? strCategoryDescription.slice(0, 150) + "..."
+              : strCategoryDescription}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
