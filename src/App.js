@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import { AppRouter } from "./router";
@@ -8,22 +8,23 @@ import Loading from "./components/Loading";
 
 import "./App.css";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const authorize = () => setIsAuthenticated(true);
-
   return (
-    <BrowserRouter>
-      {/* the layout contains sidebar and navbar */}
-      <Layout isAuthenticated={isAuthenticated}>
-        {/* contains all the routes */}
-        <AppRouter authorize={authorize} />
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* the layout contains sidebar and navbar */}
+        <Layout>
+          {/* contains all the routes */}
+          <AppRouter />
 
-        {/* setup your condition for loading, you can also use this component in other pages */}
-        <Loading isLoading={false} />
-      </Layout>
-    </BrowserRouter>
+          {/* setup your condition for loading, you can also use this component in other pages */}
+          <Loading isLoading={false} />
+        </Layout>
+      </BrowserRouter>
+    </Provider>
   );
 };
 

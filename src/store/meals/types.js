@@ -1,0 +1,3 @@
+export const GET_MEAL_BY_CATEGORY = "GET_MEAL_BY_CATEGORY";
+export const GET_MEAL_BY_ID = "GET_MEAL_BY_ID";
+export const GET_RANDOM_MEAL = "GET_RANDOM_MEAL";

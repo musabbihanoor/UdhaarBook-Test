@@ -1,31 +1,31 @@
+import { IoHomeOutline } from "react-icons/io5";
+import { BiFoodMenu } from "react-icons/bi";
+import { MdFavoriteBorder } from "react-icons/md";
+import { LiaRandomSolid } from "react-icons/lia";
+
 export const data = [
   {
-    name: "Dashboard",
-    icon: "/dashboard.png",
+    name: "Homepage",
+    icon: <IoHomeOutline className="text-primary text-2xl m-[8px]" />,
     chevron: false,
     route: "/",
   },
   {
-    name: "Orders",
-    icon: "/pedidos.png",
+    name: "Menu",
+    icon: <BiFoodMenu className="text-primary text-2xl m-[8px]" />,
     chevron: false,
-    route: "/orders",
+    route: "/menu",
   },
   {
-    name: "Products",
-    icon: "/productos.png",
+    name: "My Favorites",
+    icon: <MdFavoriteBorder className="text-primary text-2xl m-[8px]" />,
     chevron: false,
-    route: "/products",
+    route: "/favorites",
   },
   {
-    name: "Customers",
-    icon: "/clientes.png",
+    name: "Random Meal",
+    icon: <LiaRandomSolid className="text-primary text-2xl m-[8px]" />,
     chevron: true,
-  },
-  {
-    name: "Analytics",
-    icon: "/analytics.png",
-    chevron: false,
-    route: "/analytics",
+    route: "/random",
   },
 ];

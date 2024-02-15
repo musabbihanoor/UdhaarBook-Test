@@ -1,24 +1,20 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import { MdOutlineStore } from "react-icons/md";
+import { MdAccountCircle } from "react-icons/md";
 
-import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
 import { data } from "../data/sidebar";
-
-import { MdOutlineDashboard } from "react-icons/md";
 
 const drawerWidth = 230;
 
+// Handles the collapse of sidebar
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -40,6 +36,7 @@ const closedMixin = (theme) => ({
   },
 });
 
+// Style sidebar according to collapse
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -73,7 +70,6 @@ const Drawer = styled(MuiDrawer, {
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(true);
-  const [active, setActive] = useState("Dashboard");
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -81,142 +77,41 @@ export const Sidebar = () => {
 
   return (
     <Drawer variant="permanent" open={open} className="bg-[#fff]">
+      {/* Sidebar header */}
       <DrawerHeader>
         <IconButton onClick={handleDrawerToggle}>
-          <MdOutlineDashboard className="text-primary text-3xl" />{" "}
+          <MdOutlineStore className="text-primary text-3xl" />
         </IconButton>
         {open && (
           <>
-            <h1 className="text-2xl flex-1">IntelliSuite</h1>
+            <h1 className="text-2xl flex-1">MileTap</h1>
             <IconButton onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           </>
         )}
       </DrawerHeader>
-      <List>
-        {data.map((item, i) => (
-          <Item key={i} item={item} />
-        ))}
-      </List>
 
-      {open && (
-        <p className="text-[10px] text-center font-poppins">
-          <span className="font-semibold">
-            IntelliSuite Administrador Dashboard
-          </span>{" "}
-          <br /> Copyright © 2024
-        </p>
-      )}
+      {/* Sidebar menu */}
+      <div className="flex flex-col h-full justify-between">
+        <List>
+          {data.map((item, i) => (
+            <Link
+              key={i}
+              to={item.route}
+              className="flex items-center px-[10px]"
+            >
+              {item.icon}
+              {open && <p>{item.name}</p>}
+            </Link>
+          ))}
+        </List>
+
+        <Link to="/about" className="flex items-center px-[8px]">
+          <MdAccountCircle className="text-primary text-2xl m-[10px]" />
+          {open && <p>About Me</p>}
+        </Link>
+      </div>
     </Drawer>
   );
 };
-
-const options = [
-  "None",
-  "Atria",
-  "Callisto",
-  "Dione",
-  "Ganymede",
-  "Hangouts Call",
-  "Luna",
-  "Oberon",
-  "Phobos",
-  "Pyxis",
-  "Sedna",
-  "Titania",
-  "Triton",
-  "Umbriel",
-];
-
-const ITEM_HEIGHT = 48;
-
-const Item = ({ item }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <div onMouseEnter={handleClick} onMouseLeave={handleClose}>
-      <Link to={item.route} className="bg-primary">
-        <img
-          alt={item.name}
-          src={process.env.PUBLIC_URL + "/pngs/sidebar/" + item.icon}
-        />
-        <p>{item.name}</p>
-      </Link>
-
-      <Menu
-        id="long-menu"
-        MenuListProps={{
-          "aria-labelledby": "long-button",
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        PaperProps={{
-          style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: "20ch",
-          },
-        }}
-      >
-        {options.map((option) => (
-          <MenuItem
-            key={option}
-            selected={option === "Pyxis"}
-            onClick={handleClose}
-          >
-            {option}
-          </MenuItem>
-        ))}
-      </Menu>
-    </div>
-  );
-};
-
-/* <ListItem
-              key={i}
-              className={`block my-1 border-l-[5px] ${
-                active === item.name
-                  ? "border-l-primary bg-[#eee]"
-                  : "border-l-transparent bg-transparent"
-              }`}
-              disablePadding
-            >
-              <ListItemButton
-                onClick={() => setActive(item.name)}
-                className={`min-h-[48px] px-10 ${
-                  open ? "justify-initial" : "justify-center"
-                }`}
-              >
-                <Box
-                  className={`min-w-0 ${
-                    open ? "mr-3" : "mr-auto"
-                  } justify-center`}
-                >
-                  <img
-                    alt={item.name}
-                    src={process.env.PUBLIC_URL + "/pngs/sidebar/" + item.icon}
-                  />
-                </Box>
-
-                {open && (
-                  <div className="flex items-center justify-start gap-3 w-full">
-                    <ListItemText
-                      primary={item.name}
-                      className={`${
-                        active === item.name
-                          ? "text-primary italic"
-                          : "text-dark-grey"
-                      }`}
-                    />
-                  </div>
-                )}
-              </ListItemButton>
-            </ListItem> */

@@ -17,6 +17,7 @@ import theme from "../utils/theme";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -153,50 +154,21 @@ export default function PrimarySearchAppBar() {
         className="border-b-[1px] border-b-[#ccc]"
       >
         <Toolbar>
-          <h1 className="text-black text-2xl">Dashboard</h1>
-          <Box sx={{ flexGrow: 1 }} />
-          <Search>
-            <StyledInputBase
-              placeholder="Search here.."
-              inputProps={{ "aria-label": "search" }}
-              sx={{
-                backgroundColor: theme.palette.lightBlue,
-                borderRadius: 50,
-                width: "500px",
-                color: "#000",
-              }}
-            />
-
-            <SearchIcon className="absolute top-2 left-4 text-primary" />
-          </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex", gap: 30 } }}>
-            <IconButton>
-              <Badge badgeContent={12} color="primary">
-                <NotificationsNoneOutlinedIcon />
-              </Badge>
-            </IconButton>
-            <IconButton>
-              <Badge badgeContent={17} color="primary">
-                <ChatOutlinedIcon />
-              </Badge>
-            </IconButton>
-            <IconButton>
-              <Badge badgeContent={"!"} color="error">
-                <SettingsOutlinedIcon />
-              </Badge>
-            </IconButton>
-
             <hr className="border-0 border-l-[1px] border-[#ccc] h-10" />
 
-            <button className="text-white bg-primary px-6 rounded-lg relative pr-12 font-poppins">
-              Hi, <b>Samuel</b>
+            <Link
+              to="/about"
+              className="text-white bg-primary px-6 rounded-lg relative pr-12 font-poppins"
+            >
+              <p className="py-2">Musabbiha</p>
               <img
                 alt="user"
-                src="https://randomuser.me/api/portraits/men/1.jpg"
+                src="https://randomuser.me/api/portraits/women/2.jpg"
                 className="absolute bg-dark-grey h-10 w-10 right-[-10px] top-0 rounded-full border-2"
               />
-            </button>
+            </Link>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
