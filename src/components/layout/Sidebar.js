@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MdOutlineStore } from "react-icons/md";
 import { MdAccountCircle } from "react-icons/md";
 
-import { data } from "../data/sidebar";
+import { data } from "../../data/sidebar";
 
 const drawerWidth = 230;
 

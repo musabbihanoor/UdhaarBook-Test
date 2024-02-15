@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import { AppRouter } from "./router";
-import { Layout } from "./components";
-
-import Loading from "./components/Loading";
+import { Layout } from "./components/layout";
 
 import "./App.css";
 
@@ -19,9 +17,6 @@ const App = () => {
         <Layout>
           {/* contains all the routes */}
           <AppRouter />
-
-          {/* setup your condition for loading, you can also use this component in other pages */}
-          <Loading isLoading={false} />
         </Layout>
       </BrowserRouter>
     </Provider>

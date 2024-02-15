@@ -8,15 +8,10 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import theme from "../utils/theme";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({

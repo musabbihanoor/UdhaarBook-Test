@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { getRandomMeal } from "../store/meals/actions";
 
-import Loading from "../components/Loading";
 import { Button } from "@mui/material";
 import MealItem from "../components/meal/Item";
 
@@ -31,7 +30,7 @@ const Random = ({ meal, getRandomMeal }) => {
           </div>
         </div>
       ) : (
-        <Loading />
+        <h1>There's no random meal</h1>
       )}
     </div>
   );

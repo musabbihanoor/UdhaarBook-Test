@@ -5,7 +5,6 @@ import { getAllCategories } from "../store/categories/actions";
 import { getMealByCategory } from "../store/meals/actions";
 
 import CategoryList from "../components/category/List";
-import Loading from "../components/Loading";
 
 const Menu = ({ categories, getAllCategories, getMealByCategory }) => {
   useEffect(() => {
@@ -19,7 +18,11 @@ const Menu = ({ categories, getAllCategories, getMealByCategory }) => {
   return (
     <div>
       <h1 className="text-3xl mb-5">Categories</h1>
-      {categories ? <CategoryList data={categories} /> : <Loading />}
+      {categories.length > 0 ? (
+        <CategoryList data={categories} />
+      ) : (
+        <h1>Category list is empty!</h1>
+      )}
     </div>
   );
 };

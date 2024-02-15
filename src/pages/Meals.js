@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 import { getMealByCategory } from "../store/meals/actions";
 
-import Loading from "../components/Loading";
 import MealList from "../components/meal/List";
 
 const Meals = ({ meals, getMealByCategory }) => {
@@ -21,7 +20,11 @@ const Meals = ({ meals, getMealByCategory }) => {
   return (
     <div>
       <h1 className="text-3xl mb-5">Meals</h1>
-      {meals ? <MealList data={meals} /> : <Loading />}
+      {meals.length > 0 ? (
+        <MealList data={meals} />
+      ) : (
+        <h1>Meals list is empty!</h1>
+      )}
     </div>
   );
 };
