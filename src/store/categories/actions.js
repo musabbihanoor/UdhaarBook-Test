@@ -4,7 +4,7 @@ export const getAllCategories = () => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/categories.php`
+        `${process.env.REACT_APP_BASE_URL}/categories.php`
       );
       const data = await response.json();
       dispatch({ type: GET_ALL_CATEGORIES, payload: data.categories });

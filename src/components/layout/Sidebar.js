@@ -109,7 +109,7 @@ export const Sidebar = () => {
 
         <Link to="/about" className="flex items-center px-[8px]">
           <MdAccountCircle className="text-primary text-2xl m-[10px]" />
-          {open && <p>About Me</p>}
+          {open && <p>About</p>}
         </Link>
       </div>
     </Drawer>

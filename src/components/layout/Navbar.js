@@ -153,8 +153,10 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ display: { xs: "none", md: "flex", gap: 30 } }}>
             <hr className="border-0 border-l-[1px] border-[#ccc] h-10" />
 
-            <Link
-              to="/about"
+            <a
+              target="_blank"
+              rel="noreferror"
+              href="https://musabbiha.com"
               className="text-white bg-primary px-6 rounded-lg relative pr-12 font-poppins"
             >
               <p className="py-2">Musabbiha</p>
@@ -163,7 +165,7 @@ export default function PrimarySearchAppBar() {
                 src="https://randomuser.me/api/portraits/women/2.jpg"
                 className="absolute bg-dark-grey h-10 w-10 right-[-10px] top-0 rounded-full border-2"
               />
-            </Link>
+            </a>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

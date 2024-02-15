@@ -10,7 +10,7 @@ export const getMealByCategory = (category) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        `${process.env.REACT_APP_BASE_URL}/filter.php?c=${category}`
       );
       const data = await response.json();
       dispatch({ type: GET_MEAL_BY_CATEGORY, payload: data.meals });
@@ -24,7 +24,7 @@ export const getMealById = (id) => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+        `${process.env.REACT_APP_BASE_URL}/lookup.php?i=${id}`
       );
       const data = await response.json();
       dispatch({ type: GET_MEAL_BY_ID, payload: data.meals });
@@ -38,7 +38,7 @@ export const getRandomMeal = () => {
   return async (dispatch) => {
     try {
       const response = await fetch(
-        "https://www.themealdb.com/api/json/v1/1/random.php"
+        `${process.env.REACT_APP_BASE_URL}/random.php`
       );
       const data = await response.json();
       dispatch({ type: GET_RANDOM_MEAL, payload: data.meals });
