@@ -1,4 +1,4 @@
-import { GET_USER, GET_USERS } from "./types";
+import { GET_USER, GET_USERS, SEARCH_USER, USER_ERROR } from "./types";
 
 const initialState = {
   users: [],
@@ -16,6 +16,17 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload,
+      };
+    case SEARCH_USER:
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case USER_ERROR:
+      return {
+        ...state,
+        user: null,
+        users: [],
       };
     default:
       return state;

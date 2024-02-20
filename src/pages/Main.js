@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -6,26 +6,26 @@ import Search from "../components/Search";
 import UserList from "../components/User/List";
 import UserModal from "../components/Modal";
 
-import { getUsers, getUser } from "../store/user/actions";
+import { getUsers, getUser, getSearchedUser } from "../store/user/actions";
 
-const Main = ({ users, user, getUsers, getUser }) => {
+const Main = ({ users, user, getUsers, getUser, getSearchedUser }) => {
   const { username } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchUsers();
+    fetchAllUsers();
   }, []);
 
   useEffect(() => {
     fetchUserByUsername();
   }, [username]);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
-  const fetchUsers = () => {
+  const fetchAllUsers = () => {
     getUsers();
+  };
+
+  const fetchSearchUsers = (username) => {
+    getSearchedUser(username);
   };
 
   const fetchUserByUsername = () => {
@@ -38,10 +38,15 @@ const Main = ({ users, user, getUsers, getUser }) => {
 
   return (
     <div className="flex flex-col items-center p-20 gap-10">
-      <Search />
-      <UserList users={users} />
+      <Search
+        fetchSearchUsers={fetchSearchUsers}
+        fetchAllUsers={fetchAllUsers}
+      />
 
-      {username && <UserModal user={user} handleClose={handleCloseModal} />}
+      {users ? <UserList users={users} /> : <p>Users not found!</p>}
+      {user && username && (
+        <UserModal user={user} handleClose={handleCloseModal} />
+      )}
     </div>
   );
 };
@@ -54,6 +59,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getUser,
   getUsers,
+  getSearchedUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
