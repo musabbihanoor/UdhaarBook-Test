@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Button, Modal } from "flowbite-react";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -13,11 +13,9 @@ const UserModal = ({
       <Modal.Body>
         <div className="flex flex-col items-center pb-10">
           <img
-            alt="Bonnie image"
-            height="96"
+            alt={login}
             src={avatar_url}
-            width="96"
-            className="mb-3 rounded-full shadow-lg"
+            className="mb-3 rounded-full shadow-lg w-[200px] h-[200px]"
           />
           <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
             {login}

@@ -1,5 +1,6 @@
 import { GET_USER, GET_USERS, SEARCH_USER, USER_ERROR } from "./types";
 
+// fetch all users
 export const getUsers = () => {
   return async (dispatch) => {
     try {
@@ -16,6 +17,7 @@ export const getUsers = () => {
   };
 };
 
+// fetch a single user by username
 export const getUser = (username) => {
   return async (dispatch) => {
     try {
@@ -35,6 +37,8 @@ export const getUser = (username) => {
   };
 };
 
+// this function is supposed to search users by username and there
+// wasn't an endpoint for search. So i reused the endpoint for username
 export const getSearchedUser = (username) => {
   return async (dispatch) => {
     try {

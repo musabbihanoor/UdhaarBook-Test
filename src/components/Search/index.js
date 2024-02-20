@@ -7,7 +7,9 @@ const Search = ({ fetchSearchUsers, fetchAllUsers }) => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
+    // debouncing for 1 second
     const timer = setTimeout(() => {
+      // fetches user if there's a search text otherwise it fetches the list
       searchText ? fetchSearchUsers(searchText) : fetchAllUsers();
     }, 1000);
 
@@ -27,6 +29,8 @@ const Search = ({ fetchSearchUsers, fetchAllUsers }) => {
         placeholder="Search a user..."
         className="flex-1"
       />
+
+      {/* button to clear the search results */}
       {searchText && (
         <button onClick={handleClear}>
           <RxCross1 />

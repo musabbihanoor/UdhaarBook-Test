@@ -1,8 +1,8 @@
 import { GET_USER, GET_USERS, SEARCH_USER, USER_ERROR } from "./types";
 
 const initialState = {
-  users: [],
-  user: null,
+  users: [], // user list state
+  user: null, // selected user state
 };
 
 export const userReducer = (state = initialState, action) => {
