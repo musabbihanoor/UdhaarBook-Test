@@ -1,7 +1,8 @@
-import { GET_USERS } from "./types";
+import { GET_USER, GET_USERS } from "./types";
 
 const initialState = {
   users: [],
+  user: null,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

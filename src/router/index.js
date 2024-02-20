@@ -7,6 +7,7 @@ export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Main />} />
+      <Route path="/:username" element={<Main />} />
     </Routes>
   );
 };
